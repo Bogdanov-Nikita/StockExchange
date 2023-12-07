@@ -11,12 +11,12 @@ services:
       #На локальной машине стоит постгрес по этому пока маппируем в 5555
       - "5555:5432"
     environment:
-      POSTGRES_DB: "stock_exchange"
+      POSTGRES_DB: "profile"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
     healthcheck:
       #Пока оставим чтобы проверял что там есть корневая база
-      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres | grep -w 'accepting connections' || exit 1"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d profile | grep -w 'accepting connections' || exit 1"]
       interval: 10s
       timeout: 3s
       retries: 10
