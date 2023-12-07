@@ -8,6 +8,7 @@ services:
     volumes:
       - ./database:/var/lib/postgresql/data
     ports:
+      #На локальной машине стоит постгрес по этому пока маппируем в 5555
       - "5555:5432"
     environment:
       POSTGRES_DB: "stock_exchange"
