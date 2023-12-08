@@ -1,16 +1,20 @@
 package ru.moscow.profile.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
-public record ProfileResponse(){
+public record ProfileResponse(
+    UUID id,
+    UUID bankId,
+    String name,
+    String familyName,
+    String middleName,
+    String email,
+    String phone,
+    LocalDate dateOfBirth,
+    String placeOfBirth,
+    String passportNumber,
+    String registrationAddress,
+    String actualAddress
+) {
 }
-
-
-//@JsonProperty("parent_id")
