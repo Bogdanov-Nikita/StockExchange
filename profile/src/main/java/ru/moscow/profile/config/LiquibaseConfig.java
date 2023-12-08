@@ -11,6 +11,12 @@ import javax.sql.DataSource;
 @Configuration
 public class LiquibaseConfig {
 
+    /**
+     * Настройка liquibase
+     *
+     * @param dataSource Подключение к базе в которую будем записывать данные о миграциях
+     * @return Настроенный бин liquibase
+     */
     @Bean
     public SpringLiquibase liquibase(DataSource dataSource) {
         SpringLiquibase liquibase = new SpringLiquibase();
