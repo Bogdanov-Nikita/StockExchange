@@ -1,12 +1,10 @@
 package ru.moscow.profile.services.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Validator;
 import org.springframework.web.server.ResponseStatusException;
 import ru.moscow.profile.dto.ProfileResponse;
 import ru.moscow.profile.dto.ProfileSearchRequest;
