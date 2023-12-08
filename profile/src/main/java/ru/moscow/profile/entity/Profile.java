@@ -40,7 +40,7 @@ public class Profile {
     /**
      * Идентификатор клиента в банке
      */
-    @Column(name = "bank_id", nullable = false)
+    @Column(name = "bank_id")
     private UUID bankId;
 
     /**
@@ -69,7 +69,7 @@ public class Profile {
     /**
      * Телефон(в формате 7ХХХХХХХХХХ)
      */
-    String phone;
+    private String phone;
 
     /**
      * Дата рождения
