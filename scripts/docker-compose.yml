@@ -26,3 +26,14 @@ services:
       options:
         max-size: "50m"
     restart: on-failure
+
+  profile:
+    build:
+      context: ./..
+      dockerfile: ./scripts/profile/Dockerfile
+    container_name: profile
+    ports:
+      - "8080:8080"
+#    depends_on:
+#      db:
+#        condition: service_healthy
