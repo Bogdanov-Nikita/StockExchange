@@ -5,6 +5,10 @@ spring:
   application:
     name: Profile
 
+  jpa:
+    hibernate:
+      ddl-auto: none
+
   datasource:
     url: jdbc:postgresql://localhost:5432/profile
     username: postgres
