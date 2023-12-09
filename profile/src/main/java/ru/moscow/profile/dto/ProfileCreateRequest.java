@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.springframework.format.annotation.DateTimeFormat;
+import ru.moscow.profile.validators.ValidatorConstants;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -24,17 +24,22 @@ public class ProfileCreateRequest {
     private String familyName;
     private String middleName;
 
-    @Email(message = "Not correct e-mail")
+    @Email(message = ValidatorConstants.EmailValidation.MESSAGE)
     private String email;
 
-    @Pattern(regexp = "^7\\d{10}$", message = "Not correct phone")
+    @Pattern(
+        regexp = ValidatorConstants.PhonePatternValidation.VALUE,
+        message = ValidatorConstants.PhonePatternValidation.MESSAGE
+    )
     private String phone;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     private String placeOfBirth;
 
-    @Pattern(regexp = "^\\d{4} \\d{7}$", message = "Not correct passport number")
+    @Pattern(
+        regexp = ValidatorConstants.PassportPatternValidation.VALUE,
+        message = ValidatorConstants.PassportPatternValidation.MESSAGE
+    )
     private String passportNumber;
 
     private String registrationAddress;
