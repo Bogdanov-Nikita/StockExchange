@@ -14,3 +14,22 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+
+# actuator
+management:
+  info:
+    env:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: info,health,prometheus
+
+info:
+  app:
+    name: Profile service
+    version: 1.0.0
+    description: Сервис для работы с учетными записями клиентов
