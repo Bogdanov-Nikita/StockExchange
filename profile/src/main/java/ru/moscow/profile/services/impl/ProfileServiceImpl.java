@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import ru.moscow.profile.dto.ProfileCreateRequest;
 import ru.moscow.profile.dto.ProfileResponse;
 import ru.moscow.profile.dto.ProfileSearchRequest;
 import ru.moscow.profile.mapper.ProfileMapper;
@@ -20,6 +21,12 @@ import java.util.UUID;
 public class ProfileServiceImpl implements ProfileService {
 
     private final ProfileRepository repository;
+
+    @Override
+    public ProfileResponse create(ProfileCreateRequest request) {
+        return ProfileMapper.MAPPER
+            .toProfileResponse(repository.save(ProfileMapper.MAPPER.fromProfileCreateRequest(request)));
+    }
 
     @Override
     public ProfileResponse getById(UUID id) {
