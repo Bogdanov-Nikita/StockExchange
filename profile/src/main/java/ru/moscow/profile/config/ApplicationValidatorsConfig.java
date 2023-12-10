@@ -46,6 +46,12 @@ public class ApplicationValidatorsConfig {
         return result;
     }
 
+    /**
+     * @param exception ошибка валидации
+     * @param request   запрос
+     * @param response  ответ
+     * @return кастомный ответ
+     */
     @ExceptionHandler(ApplicationValidatorException.class)
     public ApplicationValidationErrorResponse applicationValidationPassHandler(
         HttpServletRequest request,
