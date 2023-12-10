@@ -18,7 +18,7 @@ import ru.moscow.profile.entity.Profile;
 public class ProfileRepositoryTest {
 
     @Container
-    public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
+    public static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
 
     @DynamicPropertySource
     static void postgresqlProperties(DynamicPropertyRegistry registry) {
@@ -82,8 +82,8 @@ public class ProfileRepositoryTest {
         profile2.setMiddleName("Иваныч");
 
         // Save the profile to the database
-        var savedProfile = profileRepository.save(profile);
-        var savedProfile2 = profileRepository.save(profile2);
+        profileRepository.save(profile);
+        profileRepository.save(profile2);
 
         // Find the profile by ID
         var foundProfile = profileRepository.findAll();

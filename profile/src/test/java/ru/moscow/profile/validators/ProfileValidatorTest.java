@@ -68,12 +68,12 @@ public class ProfileValidatorTest {
         validator.validate(profileGood, errors);
 
         assertFalse(errors.hasErrors());
-        assertNull(errors.getFieldError("bankId"));
-        assertNull(errors.getFieldError("name"));
-        assertNull(errors.getFieldError("familyName"));
-        assertNull(errors.getFieldError("middleName"));
-        assertNull(errors.getFieldError("dateOfBirth"));
-        assertNull(errors.getFieldError("passportNumber"));
+        assertEquals(0, errors.getErrorCount());
+
+        for (String field : fields) {
+            assertNull(errors.getFieldError(field));
+        }
+
     }
 
     @ParameterizedTest
