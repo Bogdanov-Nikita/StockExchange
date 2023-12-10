@@ -43,14 +43,33 @@ public class ProfileControllerTest {
 
     @Test
     public void testCreateProfile() throws Exception {
-        var profileCreateRequest = new ProfileCreateRequest();
+
+        var request = new ProfileCreateRequest();
+        request.setBankId(UUID.randomUUID());
+        request.setName("Пётр");
+        request.setFamilyName("Петрович");
+        request.setMiddleName("Петров");
+        request.setEmail("test@gmail.com");
+        request.setPhone("71234567890");
+        request.setDateOfBirth(LocalDate.of(1990, 1, 1));
+        request.setPlaceOfBirth("Москва");
+        request.setPassportNumber("1234 1234567");
+        request.setRegistrationAddress("registration");
+        request.setActualAddress("actual");
+
+        when(service.create(
+            eq("mail"),
+            eq(request)))
+            .thenReturn(null);
 
         mockMvc.perform(post("/v1/profile")
                 .contentType(MediaType.APPLICATION_JSON)
                 .header("x-Source", "mail")
-                .content(objectMapper.writeValueAsString(profileCreateRequest)))
+                .content(objectMapper.writeValueAsString(request)))
             .andExpect(status().isOk())
             .andReturn();
+
+        verify(service).create(eq("mail"), eq(request));
     }
 
     @Test

@@ -32,7 +32,7 @@ public class ProfileServiceImpl implements ProfileService {
     public ProfileResponse getById(UUID id) {
         return ProfileMapper.MAPPER.toProfileResponse(
             repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
         );
     }
 
