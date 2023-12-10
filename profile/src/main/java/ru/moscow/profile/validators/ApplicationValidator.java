@@ -2,6 +2,7 @@ package ru.moscow.profile.validators;
 
 import org.springframework.validation.Validator;
 import ru.moscow.profile.dto.ApplicationType;
+import ru.moscow.profile.dto.ProfileCreateRequest;
 
 /**
  * Обобщение для проверок
@@ -9,6 +10,11 @@ import ru.moscow.profile.dto.ApplicationType;
  * учётной записи из разных приложений для каждого приложения своя реализация
  */
 public interface ApplicationValidator extends Validator {
+
+    @Override
+    default boolean supports(Class<?> clazz) {
+        return ProfileCreateRequest.class.equals(clazz);
+    }
 
     /**
      * @return тип приложения
