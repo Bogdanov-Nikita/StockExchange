@@ -69,7 +69,7 @@ public class ProfileRepositoryTest {
         Assertions.assertEquals("Петрович", foundProfile.get().getMiddleName());
     }
 
-    /*@Test
+    @Test
     public void testFindProfileBySpecification() {
         // Create a new profile
         var profile = new Profile();
@@ -83,17 +83,17 @@ public class ProfileRepositoryTest {
 
         // Save the profile to the database
         var savedProfile = profileRepository.save(profile);
-        //var savedProfile2 = profileRepository.save(profile2);
+        var savedProfile2 = profileRepository.save(profile2);
 
         // Find the profile by ID
-        var foundProfile = profileRepository.findAll();//ProfileSpecifications.searchRequest(new ProfileSearchRequest().setName("Иван")));
+        var foundProfile = profileRepository.findAll();
 
         // Verify that the profile is found correctly
-        Assertions.assertEquals(1,foundProfile.size());
-        Assertions.assertEquals("Пётр", foundProfile.get(0).getName());
-        Assertions.assertEquals("Петров", foundProfile.get(0).getFamilyName());
-        Assertions.assertEquals("Петрович", foundProfile.get(0).getMiddleName());
-    }*/
+        Assertions.assertEquals(2, foundProfile.size());
+        Assertions.assertEquals("Пётр", foundProfile.getFirst().getName());
+        Assertions.assertEquals("Петров", foundProfile.getFirst().getFamilyName());
+        Assertions.assertEquals("Петрович", foundProfile.getFirst().getMiddleName());
+    }
 
 
 }

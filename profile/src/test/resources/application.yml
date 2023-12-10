@@ -14,6 +14,7 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+
   liquibase:
     change-log: classpath:changesets/changelog.xml
 
@@ -32,6 +33,6 @@ management:
 
 info:
   app:
-    name: Profile service
+    name: Profile service test
     version: 1.0.0
     description: Сервис для работы с учетными записями клиентов
