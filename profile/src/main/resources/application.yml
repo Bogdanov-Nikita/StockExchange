@@ -10,7 +10,7 @@ spring:
       ddl-auto: none
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/profile
+    url: jdbc:postgresql://db:5432/profile
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
