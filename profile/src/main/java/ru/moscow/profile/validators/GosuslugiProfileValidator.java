@@ -9,7 +9,7 @@ import ru.moscow.profile.dto.ProfileCreateRequest;
  * Проверка условий для создания профиля из банковского приложения
  */
 @Component
-public class BankProfileValidator implements ApplicationValidator {
+public class GosuslugiProfileValidator implements ApplicationValidator {
 
     @Override
     public void validate(Object target, Errors errors) {
@@ -17,6 +17,10 @@ public class BankProfileValidator implements ApplicationValidator {
 
         if (request.getBankId() == null) {
             errors.rejectValue("bankId", "bankId.blank", "Bank id is blank");
+        }
+
+        if (request.getPhone().isBlank()) {
+            errors.rejectValue("phone", "phone.blank", "Phone is blank");
         }
 
         if (request.getName().isBlank()) {
@@ -35,13 +39,22 @@ public class BankProfileValidator implements ApplicationValidator {
             errors.rejectValue("dateOfBirth", "dateOfBirth.blank", "Date of birth is blank");
         }
 
+        if (request.getPlaceOfBirth() == null) {
+            errors.rejectValue("placeOfBirth", "placeOfBirth.blank", "Place of birth is blank");
+        }
+
         if (request.getPassportNumber().isBlank()) {
             errors.rejectValue("passportNumber", "passportNumber.blank", "Passport number is blank");
         }
+
+        if (request.getRegistrationAddress().isBlank()) {
+            errors.rejectValue("registrationAddress", "registrationAddress.blank", "Registration address is blank");
+        }
+
     }
 
     @Override
     public ApplicationType getType() {
-        return ApplicationType.BANK;
+        return ApplicationType.GOSUSLUGI;
     }
 }
