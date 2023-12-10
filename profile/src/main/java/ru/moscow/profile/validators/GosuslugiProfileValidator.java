@@ -19,19 +19,19 @@ public class GosuslugiProfileValidator implements ApplicationValidator {
             errors.rejectValue("bankId", "bankId.blank", "Bank id is blank");
         }
 
-        if (request.getPhone().isBlank()) {
+        if (request.getPhone() == null || request.getPhone().isBlank()) {
             errors.rejectValue("phone", "phone.blank", "Phone is blank");
         }
 
-        if (request.getName().isBlank()) {
+        if (request.getName() == null || request.getName().isBlank()) {
             errors.rejectValue("name", "name.blank", "Name is blank");
         }
 
-        if (request.getFamilyName().isBlank()) {
+        if (request.getFamilyName() == null || request.getFamilyName().isBlank()) {
             errors.rejectValue("familyName", "familyName.blank", "Family name is blank");
         }
 
-        if (request.getMiddleName().isBlank()) {
+        if (request.getMiddleName() == null || request.getMiddleName().isBlank()) {
             errors.rejectValue("middleName", "middleName.blank", "Middle name is blank");
         }
 
@@ -43,11 +43,11 @@ public class GosuslugiProfileValidator implements ApplicationValidator {
             errors.rejectValue("placeOfBirth", "placeOfBirth.blank", "Place of birth is blank");
         }
 
-        if (request.getPassportNumber().isBlank()) {
+        if (request.getPassportNumber() == null || request.getPassportNumber().isBlank()) {
             errors.rejectValue("passportNumber", "passportNumber.blank", "Passport number is blank");
         }
 
-        if (request.getRegistrationAddress().isBlank()) {
+        if (request.getRegistrationAddress() == null || request.getRegistrationAddress().isBlank()) {
             errors.rejectValue("registrationAddress", "registrationAddress.blank", "Registration address is blank");
         }
 

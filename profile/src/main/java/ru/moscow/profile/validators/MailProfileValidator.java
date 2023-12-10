@@ -15,10 +15,10 @@ public class MailProfileValidator implements ApplicationValidator {
     public void validate(Object target, Errors errors) {
         var request = (ProfileCreateRequest) target;
 
-        if (request.getName().isBlank()) {
+        if (request.getName() == null || request.getName().isBlank()) {
             errors.rejectValue("name", "name.blank", "Name is blank");
         }
-        if (request.getEmail().isBlank()) {
+        if (request.getEmail() == null || request.getEmail().isBlank()) {
             errors.rejectValue("email", "email.blank", "E-mail is blank");
         }
     }

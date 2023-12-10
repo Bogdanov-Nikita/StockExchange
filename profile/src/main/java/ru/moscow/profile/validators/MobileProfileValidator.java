@@ -16,10 +16,7 @@ public class MobileProfileValidator implements ApplicationValidator {
     public void validate(Object target, Errors errors) {
         var request = (ProfileCreateRequest) target;
 
-        if (request.getName().isBlank()) {
-            errors.rejectValue("name", "name.blank", "Name is blank");
-        }
-        if (request.getPhone().isBlank()) {
+        if (request.getPhone() == null || request.getPhone().isBlank()) {
             errors.rejectValue("phone", "phone.blank", "Phone is blank");
         }
     }

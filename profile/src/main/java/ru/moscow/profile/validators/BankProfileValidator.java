@@ -19,15 +19,15 @@ public class BankProfileValidator implements ApplicationValidator {
             errors.rejectValue("bankId", "bankId.blank", "Bank id is blank");
         }
 
-        if (request.getName().isBlank()) {
+        if (request.getName() == null || request.getName().isBlank()) {
             errors.rejectValue("name", "name.blank", "Name is blank");
         }
 
-        if (request.getFamilyName().isBlank()) {
+        if (request.getFamilyName() == null || request.getFamilyName().isBlank()) {
             errors.rejectValue("familyName", "familyName.blank", "Family name is blank");
         }
 
-        if (request.getMiddleName().isBlank()) {
+        if (request.getMiddleName() == null || request.getMiddleName().isBlank()) {
             errors.rejectValue("middleName", "middleName.blank", "Middle name is blank");
         }
 
@@ -35,7 +35,7 @@ public class BankProfileValidator implements ApplicationValidator {
             errors.rejectValue("dateOfBirth", "dateOfBirth.blank", "Date of birth is blank");
         }
 
-        if (request.getPassportNumber().isBlank()) {
+        if (request.getPassportNumber() == null || request.getPassportNumber().isBlank()) {
             errors.rejectValue("passportNumber", "passportNumber.blank", "Passport number is blank");
         }
     }
