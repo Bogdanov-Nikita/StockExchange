@@ -5,12 +5,11 @@ import org.springframework.validation.Errors;
 import ru.moscow.profile.dto.ApplicationType;
 import ru.moscow.profile.dto.ProfileCreateRequest;
 
-
 /**
- * Проверка условий для создания профиля из мобильного приложения
+ * Проверка условий для создания профиля из mail приложения
  */
 @Component
-public class MobileProfileValidator implements ApplicationValidator {
+public class MailProfileValidator implements ApplicationValidator {
 
     @Override
     public void validate(Object target, Errors errors) {
@@ -19,13 +18,13 @@ public class MobileProfileValidator implements ApplicationValidator {
         if (request.getName().isBlank()) {
             errors.rejectValue("name", "name.blank", "Name is empty");
         }
-        if (request.getPhone().isBlank()) {
-            errors.rejectValue("phone", "phone.blank", "Phone is empty");
+        if (request.getEmail().isBlank()) {
+            errors.rejectValue("email", "email.blank", "E-mail is empty");
         }
     }
 
     @Override
     public ApplicationType getType() {
-        return ApplicationType.MOBILE;
+        return ApplicationType.MAIL;
     }
 }
