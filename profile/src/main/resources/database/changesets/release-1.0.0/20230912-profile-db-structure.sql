@@ -1,90 +1,70 @@
 --liquibase formatted sql
 
 --changeset Nbogdanov:1
--- /*==============================================================*/
--- /* Table: profile                                               */
--- /*==============================================================*/
--- create table public.profile
--- (
---     id            uuid                     not null,
---     accept_ts     timestamp with time zone not null,
---     name_initials text,
---     constraint pk$participant
---         primary key (id)
--- );
---
--- comment on table landing.participant is 'Участник программы';
---
--- comment on column landing.participant.id is 'Идентификатор клиента в рамках Сбер-Пасс';
---
--- comment on column landing.participant.accept_ts is 'Дата и время согласия участия в программе';
---
--- comment on column landing.participant.name_initials is 'Инициалы имени для сравнения';
---
--- /*==============================================================*/
--- /* Index: participant_sub_i1                                    */
--- /*==============================================================*/
--- create  index participant_sub_i1 on landing.participant_sub (participant_id);
---
--- /*==============================================================*/
--- /* Table: option_request_history                                */
--- /*==============================================================*/
--- create table landing.option_request_history
--- (
---     oper_id             char(32)                 not null,
---     processing_status   text                     not null,
---     option_id           uuid,
---     attempts            smallint default 0       not null,
---     sber_request_body   text                    not null,
---     sber_request_ts     timestamp with time zone not null,
---     moa_response_body   text,
---     moa_response_status smallint,
---     moa_response_ts     timestamp with time zone,
---     sber_response_body  text,
---     constraint pk$option_request_history
---         primary key (oper_id),
---     constraint ckc$processing_status$option_request_hi
---         check (processing_status in (
---                                      'SUCCESS',
---                                      'IN_PROGRESS',
---                                      'PARSING_ERROR',
---                                      'VALIDATION_FAILED',
---                                      'OPTION_ID_NOT_FOUND',
---                                      'OPTION_IS_INACTIVE',
---                                      'OPTION_IS_ACTIVE',
---                                      'MOA_ACCESS_ERROR',
---                                      'MOA_INTERNAL_ERROR',
---                                      'INTERNAL_ERROR'
---             )
---             )
--- );
---
--- comment on table landing.option_request_history is 'История запросов по изменению опции';
---
--- comment on column landing.option_request_history.oper_id is 'OperUID запроса';
---
--- comment on column landing.option_request_history.processing_status is 'Статус обработки запроса';
---
--- comment on column landing.option_request_history.option_id is 'Идентификатор опции';
---
--- comment on column landing.option_request_history.attempts is 'Количество попыток запроса';
---
--- comment on column landing.option_request_history.sber_request_body is 'Тело запроса от Сбера';
---
--- comment on column landing.option_request_history.sber_request_ts is 'Дата и время получения запроса от Сбера';
---
--- comment on column landing.option_request_history.moa_response_body is 'Тело ответа от МоА';
---
--- comment on column landing.option_request_history.moa_response_status is 'HTTP код ответа MoA';
---
--- comment on column landing.option_request_history.moa_response_ts is 'Дата и время получения ответа от МоА';
---
--- comment on column landing.option_request_history.sber_response_body is 'Тело ответа, отправленного в Сбер';
---
--- /*==============================================================*/
--- /* Index: option_request_history_i1                             */
--- /*==============================================================*/
--- create index option_request_history_i1
---     on landing.option_request_history (option_id, sber_request_ts);
---
+/*==============================================================*/
+/* Table: profile                                               */
+/*==============================================================*/
+create table public.profile
+(
+    id                   uuid not null
+        constraint pk_profile
+            primary key,
+    bank_id              uuid,
+    name                 varchar(255),
+    family_name          varchar(255),
+    middle_name          varchar(255),
+    email                varchar(255),
+    phone                varchar(255),
+    date_of_birth        date,
+    place_of_birth       varchar(255),
+    passport_number      varchar(255),
+    registration_address varchar(255),
+    actual_address       varchar(255)
+);
+
+comment on table public.profile is 'Учетная запись клиента';
+
+comment on column public.profile.id is 'Идентификатор клиента';
+
+comment on column public.profile.bank_id is 'Идентификатор клиента в банке';
+
+comment on column public.profile.name is 'Имя';
+
+comment on column public.profile.family_name is 'Фамилия';
+
+comment on column public.profile.middle_name is 'Отчество';
+
+comment on column public.profile.email is 'e-mail';
+
+comment on column public.profile.phone is 'Телефон';
+
+comment on column public.profile.date_of_birth is 'Дата рождения';
+
+comment on column public.profile.place_of_birth is 'Место рождения';
+
+comment on column public.profile.passport_number is 'Номер паспорта вместе с серией';
+
+comment on column public.profile.registration_address is 'Адрес регистрации';
+
+comment on column public.profile.actual_address is 'Адрес проживания';
+
+
+/*==============================================================*/
+/* Index: profile                                               */
+/*==============================================================*/
+
+create index profile_email_index
+    on profile (email);
+
+create index profile_family_name_index
+    on profile (family_name);
+
+create index profile_middle_name_index
+    on profile (middle_name);
+
+create index profile_name_index
+    on profile (name);
+
+create index profile_phone_index
+    on profile (phone);
 
