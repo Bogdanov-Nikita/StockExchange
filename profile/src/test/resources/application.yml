@@ -36,3 +36,8 @@ info:
     name: Profile service test
     version: 1.0.0
     description: Сервис для работы с учетными записями клиентов
+
+#Для вывода отладочных сообщений приходящих на сервис
+logging:
+  level:
+    ru.moscow.profile: DEBUG
