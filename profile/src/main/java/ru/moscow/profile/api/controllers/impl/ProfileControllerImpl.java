@@ -29,7 +29,7 @@ public class ProfileControllerImpl implements ProfileController {
     private final Map<String, ApplicationValidator> validatorMap;
 
     /**
-     * Контроллер учетной записи с инициализацией всех необходимых ApplicationValidator
+     * Контроллер учётной записи с инициализацией всех необходимых ApplicationValidator
      *
      * @param service      реализация контроллера
      * @param validatorMap промаркированный список ApplicationValidator
@@ -46,7 +46,7 @@ public class ProfileControllerImpl implements ProfileController {
     @Override
     public ResponseEntity<ProfileResponse> create(String source, ProfileCreateRequest request) {
 
-        //В случае если у нас нет такого source типа то отправляем ошибку
+        //В случае если у нас нет такого source типа то отправляем ошибку.
         var validator = Optional.of(validatorMap.get(source))
             .orElseThrow(() -> new ErrorResponseException(HttpStatus.NOT_IMPLEMENTED));
 

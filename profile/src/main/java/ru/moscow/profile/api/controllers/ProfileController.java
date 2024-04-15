@@ -21,7 +21,7 @@ import ru.moscow.profile.validators.ValidatorConstants;
 import java.util.UUID;
 
 /**
- * Контролер для работы с учётной записью клиента
+ * Контроллер для работы с учётной записью клиента
  */
 @Validated
 @RestController
@@ -29,7 +29,7 @@ import java.util.UUID;
 public interface ProfileController {
 
     /**
-     * Создание учетной записи
+     * Создание учётной записи
      *
      * @param source  тип источника данных для создания записи
      * @param request данные для учётной записи

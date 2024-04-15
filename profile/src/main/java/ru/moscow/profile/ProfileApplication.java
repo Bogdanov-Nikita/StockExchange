@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ProfileApplication {
 
     /**
-     * Сервис по работе с учетными записями клиентов
+     * Сервис по работе с учётными записями клиентов
      *
      * @param args -
      */

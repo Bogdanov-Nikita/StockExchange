@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 /**
- * Учетная запись клиента
+ * Учётная запись клиента
  */
 @Entity
 @Getter
